@@ -84,6 +84,11 @@ const CtaButton = styled.a`
     @media (max-width: 800px) {
         align-self: center;
     }
+
+    @media (max-width: 400px) {
+        font-size: 1rem;
+        padding: 5px 20px;
+    }
 `;
 
 const HeroImg = styled.img`

@@ -49,6 +49,10 @@ const SolucaoItemTexto = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+
+    @media(max-width: 400px) {
+        align-items: center;
+    }
 `;
 
 const SolucaoItemTitulo = styled.h3`
