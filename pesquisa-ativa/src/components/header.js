@@ -28,8 +28,8 @@ const MenuItem = styled.button`
   line-height: 1.3;
   padding: 10px 20px;
   text-decoration: none;
-  color: #141414;
-  background-color: #6ecbd4;
+  color: #fff;
+  background-color:#6ecbd4;
   border-radius: 4px;
   border: none;
   cursor: pointer;

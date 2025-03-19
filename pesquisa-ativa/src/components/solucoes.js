@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Swal from "sweetalert2";
 
 const ContainerSolucao = styled.div`
     background: linear-gradient(to top, #84a6af, #458396);
@@ -61,7 +62,7 @@ const SolucaoItemDescricao = styled.p`
     font-size: 1.2rem;
     line-height: 1.3;
     font-weight: normal;
-    color: #222;
+    color: rgb(211, 211, 211);
 `;
 
 const SolucaoItemBtn = styled.button`
@@ -96,6 +97,16 @@ const SolucaoImg = styled.img`
 `;
 
 export function Solucoes() {
+  const handleClick = (titulo) => {
+    Swal.fire({
+      title: `Nenhum Consultor disponível no momento para ${titulo}`,
+      text: "Tente novamente mais tarde ou agende um atendimento!",
+      icon: "info",
+      confirmButtonText: "Ok",
+      confirmButtonColor: "#458396",
+    });
+  };
+
   return (
     <ContainerSolucao>
       <Container>
@@ -111,7 +122,7 @@ export function Solucoes() {
                 Entenda como seu produto ou serviço é recebido pelo mercado e ajuste
                 estratégias antes do lançamento.
               </SolucaoItemDescricao>
-              <SolucaoItemBtn aria-label="Falar com um consultor sobre Pesquisa de Aceitação">
+              <SolucaoItemBtn onClick={() => handleClick("Pesquisa de Aceitação")}>
                 Falar com Consultor
               </SolucaoItemBtn>
             </SolucaoItemTexto>
@@ -127,7 +138,7 @@ export function Solucoes() {
               <SolucaoItemDescricao>
                 Identifique o perfil ideal de clientes para alinhar campanhas e ações com o mercado.
               </SolucaoItemDescricao>
-              <SolucaoItemBtn aria-label="Falar com um consultor sobre Pesquisa de Público-Alvo">
+              <SolucaoItemBtn onClick={() => handleClick("Pesquisa de Público-Alvo")}>
                 Falar com Consultor
               </SolucaoItemBtn>
             </SolucaoItemTexto>
@@ -143,7 +154,7 @@ export function Solucoes() {
               <SolucaoItemDescricao>
                 Avalie a efetividade das campanhas e otimize investimentos para maximizar oportunidades.
               </SolucaoItemDescricao>
-              <SolucaoItemBtn aria-label="Falar com um consultor sobre Pesquisa de Marketing">
+              <SolucaoItemBtn onClick={() => handleClick("Pesquisa de Marketing")}>
                 Falar com Consultor
               </SolucaoItemBtn>
             </SolucaoItemTexto>

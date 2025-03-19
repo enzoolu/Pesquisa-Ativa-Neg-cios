@@ -54,6 +54,7 @@ const HeroSubtitulo = styled.h1`
 `;
 
 const CtaButton = styled.button`
+  text-decoration: none;
   background-color: #6ecbd4;
   color: white;
   font-size: 1.2rem;
@@ -97,7 +98,7 @@ export function HeroSection() {
             Obtenha insights precisos e tome decisões estratégicas com base em dados confiáveis.
             Conheça nossa metodologia ágil e assertiva para pesquisas de mercado e impulsione seus resultados.
           </HeroSubtitulo>
-          <CtaButton aria-label="Agendar consultoria gratuita">
+          <CtaButton as="a" href="#contato" aria-label="Agendar consultoria gratuita">
             Quero agendar uma consultoria gratuita!
           </CtaButton>
         </HeroTexto>

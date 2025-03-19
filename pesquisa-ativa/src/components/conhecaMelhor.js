@@ -54,22 +54,48 @@ const BeneficioItem = styled.div`
   position: relative;
   text-align: start;
   cursor: pointer;
+  overflow: hidden;
 
   &:before {
     content: "";
-    display: block;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(#84a6af, #458396);
     position: absolute;
     top: 0;
     left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(#84a6af, #458396);
+    z-index: 1;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, #84a6af, #458396);
+    transition: width 0.4s ease-in-out;
+    z-index: 0;
+  }
+
+  &:hover:after {
+    width: 100%;
   }
 `;
 
 const BeneficioTexto = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  z-index: 2;
+`;
+
+const BeneficioIcon = styled.img`
+  width: 40px;
+  height: 40px;
+  margin-top: -10px;
+  transition: transform 0.3s ease-in-out;
+  transform: ${(props) => (props.expandido ? "rotate(180deg)" : "rotate(0deg)")};
 `;
 
 const BeneficioTitulo = styled.h3`
@@ -118,6 +144,7 @@ export function BeneficiosPesquisaAtiva() {
           >
             <BeneficioTexto>
               <BeneficioTitulo>{beneficio.titulo}</BeneficioTitulo>
+              <BeneficioIcon src="/images/seta.svg" alt="Seta para baixo" expandido={expandido[index]} />
               <BeneficioDescricao
                 id={`descricao-${index}`}
                 expandido={expandido[index]}
