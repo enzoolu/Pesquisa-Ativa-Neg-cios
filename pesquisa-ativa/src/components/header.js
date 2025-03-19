@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const HeaderContainer = styled.header`
   background-color: #84a6af;
+  padding: 15px 20px;
 `;
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   max-width: 1200px;
-  padding: 40px 20px;
+  padding: 20px;
   margin: 0 auto;
   align-items: center;
-  gap: 30px;
+  position: relative;
 `;
 
 const Menu = styled.nav`
@@ -21,36 +23,95 @@ const Menu = styled.nav`
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const MenuItem = styled.button`
   font-size: 1.2rem;
-  line-height: 1.3;
   padding: 10px 20px;
   text-decoration: none;
   color: #fff;
-  background-color:#6ecbd4;
+  background-color: #6ecbd4;
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  display: block;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: #333;
-    color: #fff;
   }
 `;
 
 const LogoImg = styled.img`
-  height: 100px;
+  height: 80px;
+`;
+
+const MobileMenuButton = styled.button`
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: none;
+
+  @media (max-width: 700px) {
+    display: block;
+  }
+`;
+
+const DropdownMenu = styled.ul`
+  display: ${({ open }) => (open ? "flex" : "none")};
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: #458396;
+  border-radius: 5px;
+  padding: 10px;
+  list-style: none;
+  min-width: 150px;
+  z-index: 1000;
+
+  & li {
+    padding: 10px;
+  }
+
+  & button {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+
+    &:hover {
+      background: #356b7c;
+    }
+  }
 `;
 
 export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
+      closeMenu();
     }
   };
 
@@ -65,6 +126,16 @@ export function Header() {
           <MenuItem onClick={() => scrollToSection("solucoes")}>Soluções</MenuItem>
           <MenuItem onClick={() => scrollToSection("contato")}>Contato</MenuItem>
         </Menu>
+
+        <MobileMenuButton onClick={toggleMenu} aria-label="Abrir menu">
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </MobileMenuButton>
+        <DropdownMenu open={menuOpen}>
+          <li><button onClick={() => scrollToSection("sobre")}>Sobre</button></li>
+          <li><button onClick={() => scrollToSection("beneficios")}>Benefícios</button></li>
+          <li><button onClick={() => scrollToSection("solucoes")}>Soluções</button></li>
+          <li><button onClick={() => scrollToSection("contato")}>Contato</button></li>
+        </DropdownMenu>
       </Container>
     </HeaderContainer>
   );
