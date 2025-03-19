@@ -43,7 +43,7 @@ const HeroTitulo = styled.h1`
         font-size: 3rem;
     }
 
-    @media (max-width: 350px) {
+    @media (max-width: 400px) {
         font-size: 2.2rem;
     }
 `;
@@ -58,7 +58,7 @@ const HeroSubtitulo = styled.h2`
         font-size: 1.2rem;
     }
 
-    @media (max-width: 350px) {
+    @media (max-width: 400px) {
         font-size: 1rem;
     }
 `;
