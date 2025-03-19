@@ -19,12 +19,14 @@ const Container = styled.div`
     @media (max-width: 800px) {
         grid-template-columns: 1fr;
         gap: 40px;
+        text-align: center;
     }
 `;
 
 const HeroTexto = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 
     @media (max-width: 800px) {
         align-items: center;
@@ -42,33 +44,41 @@ const HeroTitulo = styled.h1`
     }
 
     @media (max-width: 350px) {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 `;
 
-const HeroSubtitulo = styled.h1`
+const HeroSubtitulo = styled.h2`
     font-size: 1.5rem;
-    line-height: 1.1;
+    line-height: 1.3;
     color: rgb(211, 211, 211);
     margin-bottom: 40px;
+
+    @media (max-width: 650px) {
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 350px) {
+        font-size: 1rem;
+    }
 `;
 
-const CtaButton = styled.button`
-  text-decoration: none;
-  background-color: #6ecbd4;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  align-self: flex-start;
-  
-  &:hover {
-      background-color: #458396;
-      transform: scale(1.05);
+const CtaButton = styled.a`
+    text-decoration: none;
+    background-color: #6ecbd4;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+
+    &:hover {
+        background-color: #458396;
+        transform: scale(1.05);
     }
 
     @media (max-width: 800px) {
@@ -85,7 +95,6 @@ const HeroImg = styled.img`
     }
 `;
 
-
 export function HeroSection() {
   return (
     <HeroContainer>
@@ -98,7 +107,7 @@ export function HeroSection() {
             Obtenha insights precisos e tome decisões estratégicas com base em dados confiáveis.
             Conheça nossa metodologia ágil e assertiva para pesquisas de mercado e impulsione seus resultados.
           </HeroSubtitulo>
-          <CtaButton as="a" href="#contato" aria-label="Agendar consultoria gratuita">
+          <CtaButton href="#contato" aria-label="Agendar consultoria gratuita">
             Quero agendar uma consultoria gratuita!
           </CtaButton>
         </HeroTexto>
