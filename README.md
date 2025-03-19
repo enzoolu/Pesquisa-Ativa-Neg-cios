@@ -67,4 +67,4 @@ O projeto será aberto em `http://localhost:3000/`
 Este projeto está sob a licença **MIT**. Sinta-se livre para utilizá-lo e melhorá-lo!
 
 ---
-Desenvolvido por Enzo Luiz Goulart(https://github.com/seu-usuario) 🚀
+Desenvolvido por Enzo Luiz Goulart(https://github.com/enzoolu) 🚀
